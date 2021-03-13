@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1050596185156",
+    "project_id": "danishpokemonapp",
+    "storage_bucket": "danishpokemonapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050596185156:android:de5ce8e4ee560cf5ee5811",
+        "android_client_info": {
+          "package_name": "com.example.dannyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050596185156-jflrq0piqaiv92ffup4a2j2ptijfi1uu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA53l99LcUr4MU_skDPHcEMfl9h4pHS8BA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1050596185156-jflrq0piqaiv92ffup4a2j2ptijfi1uu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
