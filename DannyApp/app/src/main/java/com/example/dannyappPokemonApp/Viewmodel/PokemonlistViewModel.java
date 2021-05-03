@@ -16,14 +16,13 @@ public class PokemonlistViewModel extends ViewModel {
         RpokemonRepository = PokemonRepository.getInstance();
     }
 
-    public LiveData<List<PokemonSet>> getmPokemon() {
-        return RpokemonRepository.getPokeliste();
+    public LiveData<List<PokemonSet>> getSet() {
+        return RpokemonRepository.getSet();
     }
 
 
-    public void searchPokemonApi(String query) {
-
-        RpokemonRepository.searchPokemonApi(query);
+    public void searchPokemonApi(String query, int page) {
+        RpokemonRepository.searchPokemonApi(query, page);
     }
 
 }

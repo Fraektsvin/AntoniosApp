@@ -5,12 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
+import java.util.List;
+
 public class PokeSearchSet {
     @SerializedName("data")
     @Expose
-    private PokemonSet set;
+    private List<PokemonSet> set;
 
-    public PokemonSet getSet() {
+    @SerializedName("count")
+    @Expose
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public List<PokemonSet> getSet() {
         return set;
     }
 
@@ -18,6 +28,7 @@ public class PokeSearchSet {
     public String toString() {
         return "PokeSearchSet{" +
                 "set=" + set +
+                ", count=" + count +
                 '}';
     }
 }

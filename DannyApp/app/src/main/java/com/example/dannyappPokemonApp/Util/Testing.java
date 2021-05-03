@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Testing {
 
-    public static void printPokemonlist(List<PokemonSet> list, String tag) {
+    public static void printPokemonlist(String tag, List<PokemonSet> list) {
         for(PokemonSet pokemonSet: list) {
-            Log.d(tag, "printPokemonlist: "+ pokemonSet.getId());
+            Log.d(tag, "printPokemonlist: "+ pokemonSet.getId()+ ""+ pokemonSet.getName());
         }
     }
 }

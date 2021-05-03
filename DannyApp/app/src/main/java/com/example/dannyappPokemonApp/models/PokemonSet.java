@@ -1,6 +1,9 @@
 package com.example.dannyappPokemonApp.models;
 
-public class PokemonSet {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class PokemonSet implements Parcelable {
     public String id;
     public String name;
     public String series;
@@ -23,6 +26,28 @@ public class PokemonSet {
         this.updatedAt = updatedAt;
         this.images = images;
     }
+
+    protected PokemonSet(Parcel in) {
+        id = in.readString();
+        name = in.readString();
+        series = in.readString();
+        printedTotal = in.readInt();
+        total = in.readInt();
+        releaseDate = in.readString();
+        updatedAt = in.readString();
+    }
+
+    public static final Creator<PokemonSet> CREATOR = new Creator<PokemonSet>() {
+        @Override
+        public PokemonSet createFromParcel(Parcel in) {
+            return new PokemonSet(in);
+        }
+
+        @Override
+        public PokemonSet[] newArray(int size) {
+            return new PokemonSet[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -95,4 +120,36 @@ public class PokemonSet {
     public void setImages(Images images) {
         this.images = images;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(series);
+        dest.writeInt(printedTotal);
+        dest.writeInt(total);
+        dest.writeString(releaseDate);
+        dest.writeString(updatedAt);
+    }
+
+    @Override
+    public String toString() {
+        return "PokemonSet{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", series='" + series + '\'' +
+                ", printedTotal=" + printedTotal +
+                ", total=" + total +
+                ", legalities=" + legalities +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", images=" + images +
+                '}';
+    }
 }
+

@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -15,9 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.example.dannyappPokemonApp.AppExecutors;
 import com.example.dannyappPokemonApp.Request.Response.PokeSearchSet;
-import com.example.dannyappPokemonApp.Request.Response.PokelistResponse;
 import com.example.dannyappPokemonApp.Util.Constants;
-import com.example.dannyappPokemonApp.models.Pokeliste;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 import retrofit2.Call;
@@ -27,9 +24,11 @@ import static com.example.dannyappPokemonApp.Util.Constants.CONNECTION_TIMEOUT;
 
 public class PokemonApiClient {
     private static final String TAG = "PokemonApiClient";
+
     private static PokemonApiClient instance;
     private MutableLiveData<List<PokemonSet>> pokelistes;
     private RetrieveRunnablePokemonlist retrieveRunnablePokemonlist;
+
 
     public static PokemonApiClient getInstance() {
         if (instance == null) {
@@ -40,20 +39,18 @@ public class PokemonApiClient {
 
 
     public PokemonApiClient() {
-
-
         pokelistes = new MutableLiveData<>();
     }
-    public LiveData<List<PokemonSet>> getPokeliste() {
+    public LiveData<List<PokemonSet>> getSet() {
         return pokelistes;
     }
 
-    public void searchPokemonApi(String query) {
-        if(retrieveRunnablePokemonlist!=null) {
+    public void searchPokemonApi(String query, int page) {
+        if(retrieveRunnablePokemonlist!= null) {
             retrieveRunnablePokemonlist = null;
 
         }
-        retrieveRunnablePokemonlist = new RetrieveRunnablePokemonlist(query);
+        retrieveRunnablePokemonlist = new RetrieveRunnablePokemonlist(query, page);
         final Future handler = AppExecutors.getInstance().networkIO().submit(retrieveRunnablePokemonlist);
 
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
@@ -68,25 +65,25 @@ public class PokemonApiClient {
     private class RetrieveRunnablePokemonlist implements Runnable {
         private String query;
         private int page;
-        private int pageNumber;
-        boolean cancelRequest;
+        private boolean cancelRequest;
 
-        public RetrieveRunnablePokemonlist(String query) {
+        public RetrieveRunnablePokemonlist(String query, int page) {
             this.query = query;
+            this.page = page;
             cancelRequest = false;
         }
 
         @Override
         public void run() {
             try {
-                Response response = getPokelist(query).execute();
+                Response response = getSet(query, page).execute();
                 if (cancelRequest) {
                     return;
                 }
                 if (response.code() == 200) {
 
-                    List<PokemonSet> list = new ArrayList<>(((Collection<? extends PokemonSet>) ((PokeSearchSet) response.body()).getSet()));
-                    if (pageNumber == 1) {
+                    List<PokemonSet> list = new ArrayList<>(((PokeSearchSet) response.body()).getSet());
+                    if (page == 1) {
                         pokelistes.postValue(list);
                 }
                 else {
@@ -107,10 +104,11 @@ public class PokemonApiClient {
             }
 
         }
-        private Call<PokeSearchSet> getPokelist(String query) {
+        private Call<PokeSearchSet> getSet(String query, int page) {
             return ServiceGenerator.getPokemonAPI().getSet(
                     Constants.API_KEY,
-                    query
+                    query,
+                    String.valueOf(page)
 
 
             );

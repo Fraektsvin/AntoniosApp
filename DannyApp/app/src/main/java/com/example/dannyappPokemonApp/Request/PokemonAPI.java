@@ -17,7 +17,8 @@ public interface PokemonAPI {
         @GET("v2/sets")
         Call<PokeSearchSet> getSet(
                 @Query("key") String key,
-                @Query("q") String query
+                @Query("q") String query,
+                @Query("page") String page
 
 
 
