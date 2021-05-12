@@ -61,7 +61,7 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                pokemonRecycleAdapter.displayLoading();
+             //   pokemonRecycleAdapter.displayLoading();
                 pokemonlistViewModel.searchPokemonApi("name:" + query, 1, 250);
 
                 return false;
