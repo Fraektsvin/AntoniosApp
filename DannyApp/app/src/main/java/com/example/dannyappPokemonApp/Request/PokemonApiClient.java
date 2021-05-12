@@ -45,12 +45,12 @@ public class PokemonApiClient {
         return pokelistes;
     }
 
-    public void searchPokemonApi(String query, int page) {
+    public void searchPokemonApi(String query, int page, int pageSize) {
         if(retrieveRunnablePokemonlist!= null) {
             retrieveRunnablePokemonlist = null;
 
         }
-        retrieveRunnablePokemonlist = new RetrieveRunnablePokemonlist(query, page);
+        retrieveRunnablePokemonlist = new RetrieveRunnablePokemonlist(query, page, pageSize);
         final Future handler = AppExecutors.getInstance().networkIO().submit(retrieveRunnablePokemonlist);
 
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
@@ -65,18 +65,20 @@ public class PokemonApiClient {
     private class RetrieveRunnablePokemonlist implements Runnable {
         private String query;
         private int page;
+        private int pageSize;
         private boolean cancelRequest;
 
-        public RetrieveRunnablePokemonlist(String query, int page) {
+        public RetrieveRunnablePokemonlist(String query, int page, int pageSize) {
             this.query = query;
             this.page = page;
+            this.pageSize = pageSize;
             cancelRequest = false;
         }
 
         @Override
         public void run() {
             try {
-                Response response = getSet(query, page).execute();
+                Response response = getSet(query, page, pageSize).execute();
                 if (cancelRequest) {
                     return;
                 }
@@ -104,11 +106,13 @@ public class PokemonApiClient {
             }
 
         }
-        private Call<PokeSearchSet> getSet(String query, int page) {
+        private Call<PokeSearchSet> getSet(String query, int page, int pageSize) {
             return ServiceGenerator.getPokemonAPI().getSet(
                     Constants.API_KEY,
                     query,
-                    String.valueOf(page)
+                    String.valueOf(page),
+                    String.valueOf(pageSize)
+
 
 
             );

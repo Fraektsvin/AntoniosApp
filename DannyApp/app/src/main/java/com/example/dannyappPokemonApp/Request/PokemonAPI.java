@@ -18,7 +18,8 @@ public interface PokemonAPI {
         Call<PokeSearchSet> getSet(
                 @Query("key") String key,
                 @Query("q") String query,
-                @Query("page") String page
+                @Query("page") String page,
+                @Query("pageSize") String pageSize
 
 
 

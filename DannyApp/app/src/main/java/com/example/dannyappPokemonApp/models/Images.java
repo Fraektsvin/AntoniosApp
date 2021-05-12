@@ -1,10 +1,45 @@
 package com.example.dannyappPokemonApp.models;
 
-public class Images {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Images implements Parcelable {
     public String Symbol;
     public String logo;
     public String small;
     public String large;
+
+    protected Images(Parcel in) {
+        Symbol = in.readString();
+        logo = in.readString();
+        small = in.readString();
+        large = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Symbol);
+        dest.writeString(logo);
+        dest.writeString(small);
+        dest.writeString(large);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Images> CREATOR = new Creator<Images>() {
+        @Override
+        public Images createFromParcel(Parcel in) {
+            return new Images(in);
+        }
+
+        @Override
+        public Images[] newArray(int size) {
+            return new Images[size];
+        }
+    };
 
     public String getSymbol() {
         return Symbol;

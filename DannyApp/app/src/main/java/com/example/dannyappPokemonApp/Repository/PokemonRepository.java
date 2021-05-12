@@ -26,11 +26,11 @@ public class PokemonRepository {
         return rPokemonApiClient.getSet();
     }
 
-    public void searchPokemonApi(String query, int page) {
-            if(page==0) {
+    public void searchPokemonApi(String query, int page, int pageSize) {
+            if(page== 0) {
                 page = 1;
             }
-            rPokemonApiClient.searchPokemonApi(query, page);
+            rPokemonApiClient.searchPokemonApi(query, page, pageSize);
     }
 }
 

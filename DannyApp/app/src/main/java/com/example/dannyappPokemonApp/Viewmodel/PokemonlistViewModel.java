@@ -21,8 +21,8 @@ public class PokemonlistViewModel extends ViewModel {
     }
 
 
-    public void searchPokemonApi(String query, int page) {
-        RpokemonRepository.searchPokemonApi(query, page);
+    public void searchPokemonApi(String query, int page, int pageSize) {
+        RpokemonRepository.searchPokemonApi(query, page, pageSize);
     }
 
 }

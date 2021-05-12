@@ -11,49 +11,36 @@ public class PokemonKort implements Parcelable   {
     public String name;
     public String supertype;
     public List<String> subtypes;
-    public String level;
-    public String hp;
     public List<String> types;
-    public String evolvesFrom;
-    public List<String> retreatCost;
-    public int convertedRetreatCost;
     public PokemonSet set;
     public String number;
     public String artist;
     public String rarity;
-    public String flavorText;
     public List<Integer> nationalPokedexNumbers;
     public Legalities legalities;
     public Images images;
     public Tcgplayer tcgplayer;
-    public List<String> evolvesTo;
     public String Description;
 
     public PokemonKort() {
     }
 
-    public PokemonKort(String id, String name, String supertype, List<String> subtypes, String level, String hp, List<String> types, String evolvesFrom, List<String> retreatCost, int convertedRetreatCost, PokemonSet set, String number, String artist, String rarity, String flavorText, List<Integer> nationalPokedexNumbers, Legalities legalities, Images images, Tcgplayer tcgplayer, List<String> evolvesTo, String description) {
+    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images images, Tcgplayer tcgplayer, String description) {
         this.id = id;
         this.name = name;
         this.supertype = supertype;
         this.subtypes = subtypes;
-        this.level = level;
-        this.hp = hp;
-        this.types = types;
-        this.evolvesFrom = evolvesFrom;
 
-        this.retreatCost = retreatCost;
-        this.convertedRetreatCost = convertedRetreatCost;
+        this.types = types;
+
         this.set = set;
         this.number = number;
         this.artist = artist;
         this.rarity = rarity;
-        this.flavorText = flavorText;
         this.nationalPokedexNumbers = nationalPokedexNumbers;
         this.legalities = legalities;
         this.images = images;
         this.tcgplayer = tcgplayer;
-        this.evolvesTo = evolvesTo;
 
         Description = description;
     }
@@ -63,17 +50,13 @@ public class PokemonKort implements Parcelable   {
         name = in.readString();
         supertype = in.readString();
         subtypes = in.createStringArrayList();
-        level = in.readString();
-        hp = in.readString();
+
         types = in.createStringArrayList();
-        evolvesFrom = in.readString();
-        retreatCost = in.createStringArrayList();
-        convertedRetreatCost = in.readInt();
+
         number = in.readString();
         artist = in.readString();
         rarity = in.readString();
-        flavorText = in.readString();
-        evolvesTo = in.createStringArrayList();
+
         Description = in.readString();
     }
 
@@ -83,17 +66,10 @@ public class PokemonKort implements Parcelable   {
         dest.writeString(name);
         dest.writeString(supertype);
         dest.writeStringList(subtypes);
-        dest.writeString(level);
-        dest.writeString(hp);
         dest.writeStringList(types);
-        dest.writeString(evolvesFrom);
-        dest.writeStringList(retreatCost);
-        dest.writeInt(convertedRetreatCost);
         dest.writeString(number);
         dest.writeString(artist);
         dest.writeString(rarity);
-        dest.writeString(flavorText);
-        dest.writeStringList(evolvesTo);
         dest.writeString(Description);
     }
 
@@ -146,52 +122,12 @@ public class PokemonKort implements Parcelable   {
         this.subtypes = subtypes;
     }
 
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public String getHp() {
-        return hp;
-    }
-
-    public void setHp(String hp) {
-        this.hp = hp;
-    }
-
     public List<String> getTypes() {
         return types;
     }
 
     public void setTypes(List<String> types) {
         this.types = types;
-    }
-
-    public String getEvolvesFrom() {
-        return evolvesFrom;
-    }
-
-    public void setEvolvesFrom(String evolvesFrom) {
-        this.evolvesFrom = evolvesFrom;
-    }
-
-    public List<String> getRetreatCost() {
-        return retreatCost;
-    }
-
-    public void setRetreatCost(List<String> retreatCost) {
-        this.retreatCost = retreatCost;
-    }
-
-    public int getConvertedRetreatCost() {
-        return convertedRetreatCost;
-    }
-
-    public void setConvertedRetreatCost(int convertedRetreatCost) {
-        this.convertedRetreatCost = convertedRetreatCost;
     }
 
     public PokemonSet getSet() {
@@ -226,14 +162,6 @@ public class PokemonKort implements Parcelable   {
         this.rarity = rarity;
     }
 
-    public String getFlavorText() {
-        return flavorText;
-    }
-
-    public void setFlavorText(String flavorText) {
-        this.flavorText = flavorText;
-    }
-
     public List<Integer> getNationalPokedexNumbers() {
         return nationalPokedexNumbers;
     }
@@ -264,14 +192,6 @@ public class PokemonKort implements Parcelable   {
 
     public void setTcgplayer(Tcgplayer tcgplayer) {
         this.tcgplayer = tcgplayer;
-    }
-
-    public List<String> getEvolvesTo() {
-        return evolvesTo;
-    }
-
-    public void setEvolvesTo(List<String> evolvesTo) {
-        this.evolvesTo = evolvesTo;
     }
 
     public String getDescription() {

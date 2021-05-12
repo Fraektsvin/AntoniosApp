@@ -11,7 +11,7 @@ public class Testing {
 
     public static void printPokemonlist(String tag, List<PokemonSet> list) {
         for(PokemonSet pokemonSet: list) {
-            Log.d(tag, "printPokemonlist: "+ pokemonSet.getId()+ ""+ pokemonSet.getName());
+            Log.d(tag, "printPokemonlist: "+ pokemonSet.getId() + "." + pokemonSet.getReleaseDate());
         }
     }
 }

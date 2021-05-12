@@ -7,20 +7,16 @@ public class PokemonSet implements Parcelable {
     public String id;
     public String name;
     public String series;
-    public int printedTotal;
-    public int total;
     public Legalities legalities;
     public String releaseDate;
     public String updatedAt;
     public Images images;
 
 
-    public PokemonSet(String id, String name, String series, int printedTotal, int total, Legalities legalities, String ptcgoCode, String releaseDate, String updatedAt, Images images) {
+    public PokemonSet(String id, String name, String series, Legalities legalities, String releaseDate, String updatedAt, Images images) {
         this.id = id;
         this.name = name;
         this.series = series;
-        this.printedTotal = printedTotal;
-        this.total = total;
         this.legalities = legalities;
         this.releaseDate = releaseDate;
         this.updatedAt = updatedAt;
@@ -31,8 +27,6 @@ public class PokemonSet implements Parcelable {
         id = in.readString();
         name = in.readString();
         series = in.readString();
-        printedTotal = in.readInt();
-        total = in.readInt();
         releaseDate = in.readString();
         updatedAt = in.readString();
     }
@@ -48,6 +42,10 @@ public class PokemonSet implements Parcelable {
             return new PokemonSet[size];
         }
     };
+
+    public PokemonSet() {
+
+    }
 
     public String getId() {
         return id;
@@ -73,21 +71,6 @@ public class PokemonSet implements Parcelable {
         this.series = series;
     }
 
-    public int getPrintedTotal() {
-        return printedTotal;
-    }
-
-    public void setPrintedTotal(int printedTotal) {
-        this.printedTotal = printedTotal;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 
     public Legalities getLegalities() {
         return legalities;
@@ -131,8 +114,6 @@ public class PokemonSet implements Parcelable {
         dest.writeString(id);
         dest.writeString(name);
         dest.writeString(series);
-        dest.writeInt(printedTotal);
-        dest.writeInt(total);
         dest.writeString(releaseDate);
         dest.writeString(updatedAt);
     }
@@ -143,8 +124,6 @@ public class PokemonSet implements Parcelable {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", series='" + series + '\'' +
-                ", printedTotal=" + printedTotal +
-                ", total=" + total +
                 ", legalities=" + legalities +
                 ", releaseDate='" + releaseDate + '\'' +
                 ", updatedAt='" + updatedAt + '\'' +
