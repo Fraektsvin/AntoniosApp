@@ -1,6 +1,5 @@
 package com.example.dannyappPokemonApp.Adapter;
 
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
-import com.example.dannyappPokemonApp.models.Images;
-import com.example.dannyappPokemonApp.models.Pokeliste;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<PokemonSet> list;

@@ -18,7 +18,7 @@ public class PokemonKort implements Parcelable   {
     public String rarity;
     public List<Integer> nationalPokedexNumbers;
     public Legalities legalities;
-    public Images images;
+    public Images setImages;
     public Tcgplayer tcgplayer;
     public String Description;
 
@@ -39,7 +39,7 @@ public class PokemonKort implements Parcelable   {
         this.rarity = rarity;
         this.nationalPokedexNumbers = nationalPokedexNumbers;
         this.legalities = legalities;
-        this.images = images;
+        this.setImages = images;
         this.tcgplayer = tcgplayer;
 
         Description = description;
@@ -178,12 +178,12 @@ public class PokemonKort implements Parcelable   {
         this.legalities = legalities;
     }
 
-    public Images getImages() {
-        return images;
+    public Images getSetImages() {
+        return setImages;
     }
 
-    public void setImages(Images images) {
-        this.images = images;
+    public void setSetImages(Images images) {
+        this.setImages = images;
     }
 
     public Tcgplayer getTcgplayer() {
