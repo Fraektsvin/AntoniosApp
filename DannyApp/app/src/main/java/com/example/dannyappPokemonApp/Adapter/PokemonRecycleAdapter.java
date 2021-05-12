@@ -102,18 +102,22 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private boolean isLoading() {
+        if (list != null) {
             if (list.size() > 0) {
                 if (list.get(list.size() - 1).getName().equals("LOADING...")) {
                     return true;
                 }
             }
 
+        }
         return false;
+
     }
     @Override
     public int getItemCount() {
         return list.size();
 }
+
     public void setPokemonlist(List<PokemonSet> pokemonlist) {
         list = pokemonlist;
         notifyDataSetChanged();
