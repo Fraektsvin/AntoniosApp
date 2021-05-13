@@ -1,5 +1,8 @@
 package com.example.dannyappPokemonApp.Adapter;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
+import com.example.dannyappPokemonApp.Util.HorizontalDottedAnimation;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 import java.util.ArrayList;
@@ -20,7 +24,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private OnPokemonListener onPokemonListener;
     private static final int Setlist_type = 1;
     private static final int Loading_type = 2;
-
+    private LoadViewholder LoadViewholder;
 
     public PokemonRecycleAdapter(OnPokemonListener onPokemonListenes) {
         onPokemonListener = onPokemonListenes;
@@ -52,29 +56,28 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
 
-        int itemViewType = getItemViewType(i);
+        int itemViewType = getItemViewType(position);
         if (itemViewType == Setlist_type) {
 
             RequestOptions requestOptions = new RequestOptions()
-                    .centerCrop()
-                    .error(R.drawable.ic_launcher_background);
+                    .placeholder(R.drawable.ic_launcher_foreground);
 
-            Glide.with(((PokemonViewHolder) viewHolder).itemView)
+            Glide.with(viewHolder.itemView.getContext())
                     .setDefaultRequestOptions(requestOptions)
-                    .load(list.get(i).getImages().getLogo())
+                    .load(list.get(position).getSetImages().getLogo())
                     .into(((PokemonViewHolder) viewHolder).image);
 
 
-            ((PokemonViewHolder) viewHolder).title.setText(list.get(i).getName());
-            ((PokemonViewHolder) viewHolder).setname.setText(list.get(i).getSeries());
-            ((PokemonViewHolder) viewHolder).releasedate.setText(list.get(i).getReleaseDate());
+            ((PokemonViewHolder) viewHolder).title.setText(list.get(position).getName());
+            ((PokemonViewHolder) viewHolder).setname.setText(list.get(position).getSeries());
+            ((PokemonViewHolder) viewHolder).releasedate.setText(list.get(position).getReleaseDate());
+        }
 
         }
 
 
-    }
 
     //creating an method towards displaying the
     @Override
@@ -89,7 +92,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public void displayLoading() {
         if (!isLoading()) {
             PokemonSet pokemonSet = new PokemonSet();
-            pokemonSet.setName("LOADING...");
+            pokemonSet.setName("Loading...");
             List<PokemonSet> loadingList = new ArrayList<>();
             loadingList.add(pokemonSet);
             list = loadingList;
@@ -100,7 +103,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private boolean isLoading() {
         if (list != null) {
             if (list.size() > 0) {
-                if (list.get(list.size() - 1).getName().equals("LOADING...")) {
+                if (list.get(list.size() - 1).getName().equals("Loading...")) {
                     return true;
                 }
             }
@@ -109,9 +112,15 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return false;
 
     }
+
+
     @Override
     public int getItemCount() {
-        return list.size();
+        if(list!=null) {
+            return list.size();
+
+        }
+        return 0;
 }
 
     public void setPokemonlist(List<PokemonSet> pokemonlist) {

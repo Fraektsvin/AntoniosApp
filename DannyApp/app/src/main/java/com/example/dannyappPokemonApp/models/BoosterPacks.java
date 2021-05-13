@@ -43,11 +43,11 @@ public class BoosterPacks {
         this.set = set;
     }
 
-    public Images getImages() {
+    public Images getSetImages() {
         return images;
     }
 
-    public void setImages(Images images) {
+    public void setSetImages(Images images) {
         this.images = images;
     }
 

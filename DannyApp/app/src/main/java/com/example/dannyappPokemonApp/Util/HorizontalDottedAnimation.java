@@ -14,16 +14,16 @@ import com.example.dannyapp.R;
 
 public class HorizontalDottedAnimation extends View {
         //actual dot radius
-        private int mDotRadius = 5;
+        private int mDotRadius = 8;
 
         //Bounced Dot Radius
-        private int mBounceDotRadius = 8;
+        private int mBounceDotRadius = 12;
 
         //to get identified in which position dot has to bounce
         private int  mDotPosition;
 
         //specify how many dots you need in a progressbar
-        private int mDotAmount = 10;
+        private int mDotAmount = 12;
 
         public HorizontalDottedAnimation(Context context) {
             super(context);

@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,8 +61,7 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-             //   pokemonRecycleAdapter.displayLoading();
+                pokemonRecycleAdapter.displayLoading();
                 pokemonlistViewModel.searchPokemonApi("name:" + query, 1, 250);
 
                 return false;

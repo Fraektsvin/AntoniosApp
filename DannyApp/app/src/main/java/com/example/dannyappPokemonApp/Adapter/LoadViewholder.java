@@ -11,4 +11,5 @@ public class LoadViewholder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
+
 }

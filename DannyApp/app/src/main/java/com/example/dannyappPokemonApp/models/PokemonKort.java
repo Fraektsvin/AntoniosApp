@@ -1,5 +1,6 @@
 package com.example.dannyappPokemonApp.models;
 
+import android.media.Image;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -18,45 +19,42 @@ public class PokemonKort implements Parcelable   {
     public String rarity;
     public List<Integer> nationalPokedexNumbers;
     public Legalities legalities;
-    public Images setImages;
+    public Images image;
     public Tcgplayer tcgplayer;
     public String Description;
 
-    public PokemonKort() {
-    }
-
-    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images images, Tcgplayer tcgplayer, String description) {
+    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images image, Tcgplayer tcgplayer, String description) {
         this.id = id;
         this.name = name;
         this.supertype = supertype;
         this.subtypes = subtypes;
-
         this.types = types;
-
         this.set = set;
         this.number = number;
         this.artist = artist;
         this.rarity = rarity;
         this.nationalPokedexNumbers = nationalPokedexNumbers;
         this.legalities = legalities;
-        this.setImages = images;
+        this.image = image;
         this.tcgplayer = tcgplayer;
-
         Description = description;
     }
+
+    public PokemonKort() {
+    }
+
+
 
     protected PokemonKort(Parcel in) {
         id = in.readString();
         name = in.readString();
         supertype = in.readString();
         subtypes = in.createStringArrayList();
-
         types = in.createStringArrayList();
-
+        set = in.readParcelable(PokemonSet.class.getClassLoader());
         number = in.readString();
         artist = in.readString();
         rarity = in.readString();
-
         Description = in.readString();
     }
 
@@ -67,6 +65,7 @@ public class PokemonKort implements Parcelable   {
         dest.writeString(supertype);
         dest.writeStringList(subtypes);
         dest.writeStringList(types);
+        dest.writeParcelable(set, flags);
         dest.writeString(number);
         dest.writeString(artist);
         dest.writeString(rarity);
@@ -178,12 +177,12 @@ public class PokemonKort implements Parcelable   {
         this.legalities = legalities;
     }
 
-    public Images getSetImages() {
-        return setImages;
+    public Images getImage() {
+        return image;
     }
 
-    public void setSetImages(Images images) {
-        this.setImages = images;
+    public void setImage(Images image) {
+        this.image = image;
     }
 
     public Tcgplayer getTcgplayer() {

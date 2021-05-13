@@ -12,22 +12,9 @@ public class Images implements Parcelable {
     protected Images(Parcel in) {
         Symbol = in.readString();
         logo = in.readString();
-        small = in.readString();
-        large = in.readString();
+
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Symbol);
-        dest.writeString(logo);
-        dest.writeString(small);
-        dest.writeString(large);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
     public static final Creator<Images> CREATOR = new Creator<Images>() {
         @Override
@@ -40,22 +27,6 @@ public class Images implements Parcelable {
             return new Images[size];
         }
     };
-
-    public String getSymbol() {
-        return Symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        Symbol = symbol;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
 
     public String getSmall() {
         return small;
@@ -73,13 +44,45 @@ public class Images implements Parcelable {
         this.large = large;
     }
 
-    public Images(String symbol, String logo, String small, String large) {
+
+    public String getSymbol() {
+        return Symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        Symbol = symbol;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+
+
+
+    public Images(String symbol, String logo) {
         Symbol = symbol;
         this.logo = logo;
-        this.small = small;
-        this.large = large;
+
     }
 
     public Images() {
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(Symbol);
+        dest.writeString(logo);
+        dest.writeString(small);
+        dest.writeString(large);
     }
 }

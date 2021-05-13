@@ -23,12 +23,32 @@ public class PokemonSet implements Parcelable {
         this.images = images;
     }
 
+
+
+    public PokemonSet() {
+
+    }
+
     protected PokemonSet(Parcel in) {
         id = in.readString();
         name = in.readString();
         series = in.readString();
         releaseDate = in.readString();
         updatedAt = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(name);
+        dest.writeString(series);
+        dest.writeString(releaseDate);
+        dest.writeString(updatedAt);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<PokemonSet> CREATOR = new Creator<PokemonSet>() {
@@ -42,10 +62,6 @@ public class PokemonSet implements Parcelable {
             return new PokemonSet[size];
         }
     };
-
-    public PokemonSet() {
-
-    }
 
     public String getId() {
         return id;
@@ -96,27 +112,15 @@ public class PokemonSet implements Parcelable {
         this.updatedAt = updatedAt;
     }
 
-    public Images getImages() {
+    public Images getSetImages() {
         return images;
     }
 
-    public void setImages(Images images) {
+    public void setSetImages(Images images) {
         this.images = images;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(name);
-        dest.writeString(series);
-        dest.writeString(releaseDate);
-        dest.writeString(updatedAt);
-    }
 
     @Override
     public String toString() {

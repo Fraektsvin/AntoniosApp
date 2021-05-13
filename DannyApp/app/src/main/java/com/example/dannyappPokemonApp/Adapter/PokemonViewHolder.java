@@ -1,6 +1,7 @@
 package com.example.dannyappPokemonApp.Adapter;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,7 @@ import com.example.dannyapp.R;
 public class PokemonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView title, setname, releasedate;
-    AppCompatImageView image;
+    ImageView image,loading;
     OnPokemonListener onPokemonListener;
 
     public PokemonViewHolder( View itemView, OnPokemonListener onPokemonListener) {
@@ -23,7 +24,6 @@ public class PokemonViewHolder extends RecyclerView.ViewHolder implements View.O
         setname = itemView.findViewById(R.id.Pokemon_setname);
         releasedate = itemView.findViewById(R.id.Pokemon_releasedate);
         image = itemView.findViewById(R.id.Pokemon_image);
-
         itemView.setOnClickListener(this);
     }
 
