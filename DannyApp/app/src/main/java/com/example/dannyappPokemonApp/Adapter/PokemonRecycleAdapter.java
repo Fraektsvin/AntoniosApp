@@ -1,8 +1,5 @@
 package com.example.dannyappPokemonApp.Adapter;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
-import com.example.dannyappPokemonApp.Util.HorizontalDottedAnimation;
 import com.example.dannyappPokemonApp.models.PokemonKort;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
@@ -50,7 +46,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 return new LoadViewholder(view);
             }
             case PokemonCard_type: {
-                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_pokemoncarditems, viewGroup, false);
+                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pokemoncarditems, viewGroup, false);
                 return new PokemonCardViewHolder(view,onPokemonListener);
             }
             default: {
@@ -104,8 +100,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     //creating an method towards displaying the
     @Override
     public int getItemViewType(int position) {
-
-        if (list.get(position).getName().equals("Loading...")) {
+       if (list.get(position).getName().equals("Loading...")) {
             return Loading_type;
         } else {
             return Setlist_type;
@@ -124,6 +119,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private boolean isLoading() {
+
         if (list != null) {
             if (list.size() > 0) {
                 if (list.get(list.size() - 1).getName().equals("Loading...")) {
@@ -176,5 +172,14 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         pokemonKorts = pokemonKortslist;
         notifyDataSetChanged();
     }
+    public PokemonKort getPokemonKort(int position) {
+        if(pokemonKorts != null) {
+            if(pokemonKorts.size()>0) {
+                return pokemonKorts.get(position);
+            }
+        }
+        return null;
+    }
+
 
 }

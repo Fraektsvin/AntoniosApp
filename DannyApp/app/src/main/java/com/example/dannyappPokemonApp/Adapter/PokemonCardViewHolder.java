@@ -28,7 +28,8 @@ public class PokemonCardViewHolder extends RecyclerView.ViewHolder implements Vi
 
     @Override
     public void onClick(View v) {
-    listener.onPokemonCardClick(pokemoncardname.getText().toString());
+    listener.onPokemonCardClick(getAdapterPosition());
+
     }
 }
 

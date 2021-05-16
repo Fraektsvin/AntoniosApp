@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/ScrollViewParent"
+    android:visibility="gone">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -14,7 +17,9 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/LinearLayoutContainer">
+
 
 <ImageView
     android:id="@+id/Pokemoncard_image"
@@ -37,8 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="90"
         android:textSize="@dimen/small_text"
-        android:id="@+id/Pokemon_setname"
+        android:id="@+id/Pokemon_Number"
         android:gravity="start"/>
     </LinearLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</ScrollView>

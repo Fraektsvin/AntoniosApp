@@ -1,19 +1,19 @@
 package com.example.dannyappPokemonApp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dannyapp.R;
 import com.example.dannyappPokemonApp.Adapter.OnPokemonListener;
+import com.example.dannyappPokemonApp.Adapter.PokemonCardViewHolder;
 import com.example.dannyappPokemonApp.Adapter.PokemonRecycleAdapter;
 import com.example.dannyappPokemonApp.Util.Testing;
 import com.example.dannyappPokemonApp.Viewmodel.PokemonlistViewModel;
@@ -21,6 +21,7 @@ import java.util.List;
 
 import com.example.dannyappPokemonApp.models.PokemonKort;
 import com.example.dannyappPokemonApp.models.PokemonSet;
+import com.google.firebase.internal.InternalTokenProvider;
 
 public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListener {
     private RecyclerView recyclerView;
@@ -50,12 +51,14 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
             @Override
             public void onChanged(@Nullable List<PokemonSet> pokelistes) {
                if(pokelistes!= null){
+
                    Testing.printPokemonlist("Pokemon Test", pokelistes);
                    pokemonRecycleAdapter.setPokemonlist(pokelistes);
                }
             }
         });
     }
+
     private void subscribeObserversCards() {
 
         pokemonlistViewModel.getData().observe(this, new Observer<List<PokemonKort>>() {
@@ -98,15 +101,16 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
 
     @Override
     public void onPokemonclick(int position) {
-
-
+        Intent intent = new Intent(this, PokemonCardsActivtity.class);
+        intent.putExtra("pokemonKort", pokemonRecycleAdapter.getPokemonKort(position));
+        startActivity(intent);
     }
 
+
+
     @Override
-    public void onPokemonCardClick(String category) {
-        Log.d(TAG, "onPokemonclick: clicked" + category);
-        pokemonRecycleAdapter.displayLoadingCards();
-        pokemonlistViewModel.searchPokemonApiCards("name:" + category, 1, 250);
+    public void onPokemonCardClick(int position) {
+
     }
     private void displayPokemoncards() {
         Log.d(TAG, "DisplayPokemoncards:called.");
