@@ -45,5 +45,6 @@
         android:id="@+id/Pokemon_Number"
         android:gravity="start"/>
     </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </ScrollView>

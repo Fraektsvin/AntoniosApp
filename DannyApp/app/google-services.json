@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1050596185156",
-    "project_id": "danishpokemonapp",
-    "storage_bucket": "danishpokemonapp.appspot.com"
+    "project_number": "17471383119",
+    "firebase_url": "https://dannyapp-3152f-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "dannyapp-3152f",
+    "storage_bucket": "dannyapp-3152f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1050596185156:android:de5ce8e4ee560cf5ee5811",
+        "mobilesdk_app_id": "1:17471383119:android:c2845b9a7d1ad27128ec3a",
         "android_client_info": {
           "package_name": "com.example.dannyapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1050596185156-jflrq0piqaiv92ffup4a2j2ptijfi1uu.apps.googleusercontent.com",
+          "client_id": "17471383119-6pt6b3dn0qmr88geoodee9i68btj79q6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA53l99LcUr4MU_skDPHcEMfl9h4pHS8BA"
+          "current_key": "AIzaSyC55lCpLxw2OKsZQOa7ep6xhFkapcSzHJw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1050596185156-jflrq0piqaiv92ffup4a2j2ptijfi1uu.apps.googleusercontent.com",
+              "client_id": "17471383119-6pt6b3dn0qmr88geoodee9i68btj79q6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

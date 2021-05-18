@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
+import com.example.dannyappPokemonApp.Viewmodel.PokemonKortViewModel;
 import com.example.dannyappPokemonApp.models.PokemonKort;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
@@ -84,7 +85,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
                 Glide.with(viewHolder.itemView.getContext())
                         .setDefaultRequestOptions(requestOptions)
-                        .load(list.get(position).getSetImages())
+                        .load(pokemonKorts.get(position).getImage().getLarge())
                         .into(((PokemonCardViewHolder) viewHolder).Pokemoncard);
 
 

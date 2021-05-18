@@ -22,8 +22,9 @@ public class PokemonKort implements Parcelable   {
     public Images image;
     public Tcgplayer tcgplayer;
     public String Description;
+    private boolean owned;
 
-    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images image, Tcgplayer tcgplayer, String description) {
+    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images image, Tcgplayer tcgplayer, String description, boolean owned) {
         this.id = id;
         this.name = name;
         this.supertype = supertype;
@@ -38,6 +39,7 @@ public class PokemonKort implements Parcelable   {
         this.image = image;
         this.tcgplayer = tcgplayer;
         Description = description;
+        this.owned = owned;
     }
 
     public PokemonKort() {

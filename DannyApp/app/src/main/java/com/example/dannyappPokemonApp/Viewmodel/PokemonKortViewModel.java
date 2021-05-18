@@ -1,0 +1,48 @@
+package com.example.dannyappPokemonApp.Viewmodel;
+
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.dannyappPokemonApp.Repository.PokemonKortDAO;
+import com.example.dannyappPokemonApp.models.PokemonKort;
+
+import java.util.List;
+
+public class PokemonKortViewModel extends AndroidViewModel {
+    private PokemonKortDAO pokemonKortDAO;
+    public enum ViewState {Pokemonkort, PokemonSet};
+    private MutableLiveData<ViewState> viewState;
+
+
+    public PokemonKortViewModel(@NonNull Application application) {
+        super(application);
+        init();
+    }
+   /* public PokemonKortViewModel() {
+        pokemonRepository = PokemonRepository.getInstance();
+    }
+*/
+    public LiveData<List<PokemonKort>> getData() {
+        return pokemonKortDAO.getData();
+    }
+    public void searchPokemonApiCards(String query, int page, int pageSize) {
+        pokemonKortDAO.searchPokemonApiCards(query, page, pageSize);
+
+    }
+    private void init() {
+        if(viewState == null) {
+            viewState = new MutableLiveData<>();
+            viewState.setValue(ViewState.Pokemonkort);
+        }
+
+    }
+
+
+public LiveData<ViewState> getViewState() {
+        return viewState;
+}
+}

@@ -11,6 +11,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorAccent">#e22b2b</color>
-
+    <color name="colorText">#dddddd</color>
+    <color name="colorHint">#959595</color>
+    <color name="colorButtonTransparent">#be050505</color>
     <color name="red">#e22b2b</color>
 </resources>

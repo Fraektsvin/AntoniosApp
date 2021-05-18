@@ -3,6 +3,7 @@ package com.example.dannyappPokemonApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
@@ -34,11 +35,10 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pokemonlist_item);
         recyclerView = findViewById(R.id.pokemonlistRecycler);
-
+        Toast.makeText(this, "Firebase connection Succes", Toast.LENGTH_SHORT).show();
         pokemonlistViewModel = ViewModelProviders.of(this).get(PokemonlistViewModel.class);
         initRecyclerView();
         subscribeObservers();
-        subscribeObserversCards();
         initSearchView();
         if(!pokemonlistViewModel.isViewingPomemonCards()) {
             displayPokemoncards();
@@ -59,21 +59,6 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         });
     }
 
-    private void subscribeObserversCards() {
-
-        pokemonlistViewModel.getData().observe(this, new Observer<List<PokemonKort>>() {
-
-            @Override
-            public void onChanged(@Nullable List<PokemonKort> pokemonKorts) {
-                if(pokemonKorts!= null){
-                    Testing.printPokemonlistCards("Pokemon Test", pokemonKorts);
-                    pokemonRecycleAdapter.setPokemonKorts(pokemonKorts);
-            }
-
-
-            }
-        });
-    }
     private void initRecyclerView() {
         pokemonRecycleAdapter = new PokemonRecycleAdapter( this);
         recyclerView.setAdapter(pokemonRecycleAdapter);

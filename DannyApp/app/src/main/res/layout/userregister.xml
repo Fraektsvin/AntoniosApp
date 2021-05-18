@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/lillebilledet">
+
+    <TextView
+        android:layout_width="431dp"
+        android:layout_height="336dp"
+        android:fontFamily="cursive"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/app_name_size">
+
+    </TextView>
+
+    <EditText
+        android:hint="Email"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/Add_Email"
+        android:drawableLeft="@drawable/ic_email"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorHint"
+        />
+    <EditText
+        android:hint="Password"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="@dimen/drawable_padding"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/Add_password"
+        android:drawableLeft="@drawable/ic_password"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorHint"
+        />
+    <EditText
+        android:hint="Name"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/Add_name"
+        android:drawableLeft="@drawable/ic_name"
+        android:fontFamily="cursive"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorHint"
+
+        />
+
+    <Button
+        android:text="Add to database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddNewUser"/>
+</LinearLayout>

@@ -1,17 +1,17 @@
 package com.example.dannyappPokemonApp.Viewmodel;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import com.example.dannyappPokemonApp.Repository.PokemonRepository;
-import com.example.dannyappPokemonApp.models.Pokeliste;
-import com.example.dannyappPokemonApp.models.PokemonKort;
+import com.example.dannyappPokemonApp.Repository.PokemonSetDAO;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 public class PokemonlistViewModel extends ViewModel {
-    private PokemonRepository RpokemonRepository;
+    private PokemonSetDAO rpokemonSetDAO;
     private boolean ViewingPomemonCards;
 
     public boolean isViewingPomemonCards() {
@@ -24,24 +24,18 @@ public class PokemonlistViewModel extends ViewModel {
 
     public PokemonlistViewModel() {
         ViewingPomemonCards = false;
-        RpokemonRepository = PokemonRepository.getInstance();
+        rpokemonSetDAO = PokemonSetDAO.getInstance();
     }
 
     public LiveData<List<PokemonSet>> getSet() {
-        return RpokemonRepository.getSet();
+        return rpokemonSetDAO.getSet();
     }
 
-    public LiveData<List<PokemonKort>> getData() {
-        return RpokemonRepository.getData();
-    }
+
 
     public void searchPokemonApi(String query, int page, int pageSize) {
         ViewingPomemonCards = true;
-        RpokemonRepository.searchPokemonApi(query, page, pageSize);
+        rpokemonSetDAO.searchPokemonApi(query, page, pageSize);
     }
 
-    public void searchPokemonApiCards(String query, int page, int pageSize) {
-        RpokemonRepository.searchPokemonApiCards(query, page, pageSize);
-
-    }
 }
