@@ -18,14 +18,14 @@ import java.util.List;
 public class PokemonKortDAO {
     private PokemonApiCards pokemonApiCards;
     private static PokemonKortDAO instance;
-    private FirebaseDatabase database;
+   /* private FirebaseDatabase database;
     private static DatabaseReference databaseReference;
    // private StorageReference storageReference;
    // private StorageTask storageTask;
-    private final String datainfo = "PokemonCardHolder";
+   /* private final String datainfo = "PokemonCardHolder";
     private MutableLiveData<List<PokemonKort>> Actullist;
     private MutableLiveData<List<PokemonKort>> Pokemonholder;
-
+*/
     public static PokemonKortDAO getInstance() {
         if(instance== null) {
             instance = new PokemonKortDAO();
@@ -34,12 +34,12 @@ public class PokemonKortDAO {
     }
 
     private  PokemonKortDAO() {
-        Pokemonholder = new MutableLiveData<>(new ArrayList<>());
+      /*  Pokemonholder = new MutableLiveData<>(new ArrayList<>());
         Actullist = new MutableLiveData<>(new ArrayList<>());
         database = FirebaseDatabase.getInstance("https://dannyapp-3152f-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseReference = database.getReference().child("user");
       //  storageReference = FirebaseStorage.getInstance("")
-
+*/
         pokemonApiCards = PokemonApiCards.getInstance();
     }
     public LiveData<List<PokemonKort>> getData() {

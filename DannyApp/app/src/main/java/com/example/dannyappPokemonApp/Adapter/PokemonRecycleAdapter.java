@@ -19,7 +19,6 @@ import java.util.List;
 
 public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<PokemonSet> list;
-    private List<PokemonKort> pokemonKorts;
     private OnPokemonListener onPokemonListener;
     private static final int Setlist_type = 1;
     private static final int Loading_type = 2;
@@ -46,10 +45,7 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_loadinglist, viewGroup, false);
                 return new LoadViewholder(view);
             }
-            case PokemonCard_type: {
-                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pokemoncarditems, viewGroup, false);
-                return new PokemonCardViewHolder(view,onPokemonListener);
-            }
+
             default: {
                 view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layoutpokemonlist_item, viewGroup, false);
                 return new PokemonViewHolder(view, onPokemonListener);
@@ -77,24 +73,10 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             ((PokemonViewHolder) viewHolder).title.setText(list.get(position).getName());
             ((PokemonViewHolder) viewHolder).setname.setText(list.get(position).getSeries());
             ((PokemonViewHolder) viewHolder).releasedate.setText(list.get(position).getReleaseDate());
-        } else {
-            if (itemViewType == PokemonCard_type) {
-
-                RequestOptions requestOptions = new RequestOptions()
-                        .placeholder(R.drawable.ic_launcher_foreground);
-
-                Glide.with(viewHolder.itemView.getContext())
-                        .setDefaultRequestOptions(requestOptions)
-                        .load(pokemonKorts.get(position).getImage().getLarge())
-                        .into(((PokemonCardViewHolder) viewHolder).Pokemoncard);
-
-
-                ((PokemonCardViewHolder) viewHolder).pokemoncardname.setText(list.get(position).getName());
-
-            }
+        }
 
         }
-    }
+
 
 
 
@@ -132,55 +114,23 @@ public class PokemonRecycleAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return false;
 
     }
-    private boolean isLoadingCards() {
-        if (pokemonKorts != null) {
-            if (pokemonKorts.size() > 0) {
-                if (pokemonKorts.get(pokemonKorts.size() - 1).getNumber().equals("Loading")) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    public void displayLoadingCards() {
-        if (!isLoadingCards()) {
-            PokemonKort pokemonKort = new PokemonKort();
-            pokemonKort.setNumber("Loading...");
-            List<PokemonKort> loadingList = new ArrayList<>();
-            loadingList.add(pokemonKort);
-            pokemonKorts = loadingList;
-            notifyDataSetChanged();
-        }
-    }
+
+
 
     @Override
     public int getItemCount() {
         if (list != null) {
             return list.size();
-
-        } else if (pokemonKorts != null)
-            return pokemonKorts.size();
-        {
+        }
             return 0;
         }
-    }
+
 
     public void setPokemonlist(List<PokemonSet> pokemonlist) {
         list = pokemonlist;
         notifyDataSetChanged();
     }
-    public void setPokemonKorts(List<PokemonKort> pokemonKortslist) {
-        pokemonKorts = pokemonKortslist;
-        notifyDataSetChanged();
-    }
-    public PokemonKort getPokemonKort(int position) {
-        if(pokemonKorts != null) {
-            if(pokemonKorts.size()>0) {
-                return pokemonKorts.get(position);
-            }
-        }
-        return null;
-    }
+
 
 
 }

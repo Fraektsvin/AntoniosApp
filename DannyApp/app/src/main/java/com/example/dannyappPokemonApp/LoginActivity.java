@@ -21,6 +21,7 @@ public class LoginActivity extends BaseActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "LoginActivity";
+
     private EditText Email, Password;
     private Button btnSignIn,btnSignOut;
 
@@ -72,8 +73,9 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-                toastMessage("Signing Out...");
-
+                toastMessage("Register");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

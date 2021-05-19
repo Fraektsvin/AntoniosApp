@@ -28,7 +28,7 @@ public class PokemonApiCards {
 
     private static PokemonApiCards instance;
     private MutableLiveData<List<PokemonKort>> pokemonkortlist;
-    private PokemonApiCards.RetrieveRunnablePokemonlist retrieveRunnablePokemonlist;
+    private RetrieveRunnablePokemonlist retrieveRunnablePokemonlist;
 
 
     public static PokemonApiCards getInstance() {

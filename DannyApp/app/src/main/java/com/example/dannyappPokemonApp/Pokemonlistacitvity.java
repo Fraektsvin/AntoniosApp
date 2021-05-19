@@ -14,13 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dannyapp.R;
 import com.example.dannyappPokemonApp.Adapter.OnPokemonListener;
-import com.example.dannyappPokemonApp.Adapter.PokemonCardViewHolder;
 import com.example.dannyappPokemonApp.Adapter.PokemonRecycleAdapter;
 import com.example.dannyappPokemonApp.Util.Testing;
 import com.example.dannyappPokemonApp.Viewmodel.PokemonlistViewModel;
 import java.util.List;
 
-import com.example.dannyappPokemonApp.models.PokemonKort;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 import com.google.firebase.internal.InternalTokenProvider;
 
@@ -29,7 +27,6 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
     private PokemonRecycleAdapter pokemonRecycleAdapter;
     private static final String TAG = "BaseActivity";
     private PokemonlistViewModel pokemonlistViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +37,7 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         initRecyclerView();
         subscribeObservers();
         initSearchView();
-        if(!pokemonlistViewModel.isViewingPomemonCards()) {
-            displayPokemoncards();
-        }
+
     }
     private void subscribeObservers() {
 
@@ -87,7 +82,6 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
     @Override
     public void onPokemonclick(int position) {
         Intent intent = new Intent(this, PokemonCardsActivtity.class);
-        intent.putExtra("pokemonKort", pokemonRecycleAdapter.getPokemonKort(position));
         startActivity(intent);
     }
 
@@ -100,6 +94,14 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
     private void displayPokemoncards() {
         Log.d(TAG, "DisplayPokemoncards:called.");
         pokemonlistViewModel.setViewingPomemonCards(false);
+
+
+       /* skal være i create klassen til videreudvikling.
+       if(!pokemonlistViewModel.isViewingPomemonCards()) {
+            displayPokemoncards();
+        }
         pokemonRecycleAdapter.displayLoadingCards();
+
+        */
     }
 }

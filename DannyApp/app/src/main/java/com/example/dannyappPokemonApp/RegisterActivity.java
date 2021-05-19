@@ -1,7 +1,9 @@
 package com.example.dannyappPokemonApp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.dannyapp.R;
+import com.example.dannyappPokemonApp.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,7 +51,7 @@ public class RegisterActivity extends BaseActivity {
         Add_names = (EditText) findViewById(R.id.Add_name);
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference();
+        myRef = mFirebaseDatabase.getReference("user");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -66,7 +69,7 @@ public class RegisterActivity extends BaseActivity {
                 // ...
             }
         };
-
+ // read from database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -77,7 +80,6 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Failed to read value
-                toastMessage("Failed to alter database.");
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
@@ -86,21 +88,34 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: Attempting to add object to database.");
-                String Useremail = Add_Emails.getText().toString();
-                String Userpass = Add_passwords.getText().toString();
-                String Username = Add_names.getText().toString();
-
-                if(!Useremail.equals("")){
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    String userId = user.getUid();
-                    myRef.child(userId).child("email").child(Useremail).setValue(Useremail);
-                    toastMessage("Adding " + Useremail + " to database...");
-                    //reset the text
-                    Add_Emails.setText("");
-                }
+                    AddUser();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
+             private void AddUser() {
+                 String email = Add_Emails.getText().toString().trim();
+                 String password = Add_passwords.getText().toString().trim();
+                 String name = Add_names.getText().toString().trim();
+
+                 if (!TextUtils.isEmpty(email)) {
+                    String id = myRef.push().getKey();
+                    User users = new User(email, password, name);
+                    myRef.child(id).setValue(users);
+
+                     // myRef.child(userId).child("user").child(name).setValue("true");
+                     //  myRef.child(userId).child("user").child(password).setValue("true");
+
+                     toastMessage("Adding " + email + " to database...");
+                     //reset the text
+                     Add_Emails.setText("");
+
+                     //   Add_names.setText("");
+                     // Add_passwords.setText("");
+
+                 }
+             }
 
     @Override
     public void onStart() {

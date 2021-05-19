@@ -4,23 +4,24 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
-    private String name;
-    private String password;
     private String email;
+    private String password;
+    private String name;
 
-    public User(String name, String password, String email) {
-        this.name = name;
-        this.password = password;
+    public User(String email, String password, String name) {
         this.email = email;
+        this.password = password;
+        this.name = name;
+
     }
 
     public User() {
     }
 
     protected User(Parcel in) {
-        name = in.readString();
-        password = in.readString();
         email = in.readString();
+        password = in.readString();
+        name = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -66,8 +67,8 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeString(password);
         dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(name);
     }
 }
