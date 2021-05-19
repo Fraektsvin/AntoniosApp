@@ -45,6 +45,7 @@ public class PokemonKortDAO {
     public LiveData<List<PokemonKort>> getData() {
         return pokemonApiCards.getData();
     }
+
     public void searchPokemonApiCards(String query, int page, int pageSize) {
         if(page== 0) {
             page = 1;

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.dannyappPokemonApp.PokemonCardsActivtity"
+    android:orientation="horizontal"
     android:background="@drawable/lillebilledet">
 
 
@@ -29,6 +30,7 @@
             </androidx.appcompat.widget.SearchView>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

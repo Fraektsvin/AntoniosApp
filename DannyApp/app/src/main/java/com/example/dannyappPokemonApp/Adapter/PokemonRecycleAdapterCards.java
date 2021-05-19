@@ -17,11 +17,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerView. ViewHolder> {
     private List<PokemonKort> pokemonKorts;
     private OnPokemonListener onPokemonListener;
     private static final int Loading_types = 3;
     private static final int PokemonCard_type = 4;
+    private LoadViewholder LoadViewholder;
 
     public PokemonRecycleAdapterCards(OnPokemonListener onPokemonListenes) {
         onPokemonListener = onPokemonListenes;

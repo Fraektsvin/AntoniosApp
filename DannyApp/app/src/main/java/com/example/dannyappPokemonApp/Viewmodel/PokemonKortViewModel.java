@@ -15,6 +15,8 @@ import java.util.List;
 
 public class PokemonKortViewModel extends ViewModel {
     private PokemonKortDAO pokemonKortDAO;
+    private boolean ViewingPomemonCards;
+
 
     // private MutableLiveData<ViewState> viewState;
     //public enum ViewState {Pokemonkort, PokemonSet};

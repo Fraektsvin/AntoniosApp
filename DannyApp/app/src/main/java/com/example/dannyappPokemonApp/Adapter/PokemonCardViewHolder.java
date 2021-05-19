@@ -21,6 +21,7 @@ public class PokemonCardViewHolder extends RecyclerView.ViewHolder implements Vi
         Pokemoncard = itemView.findViewById(R.id.Pokemoncard_image);
         pokemoncardname = itemView.findViewById(R.id.Pokemoncardtxt);
         pokemon_number = itemView.findViewById(R.id.Pokemon_Number);
+
         itemView.setOnClickListener(this);
     }
 

@@ -23,7 +23,7 @@ public class AppExecutors {
     private final Executor ManagingData = Executors.newSingleThreadExecutor();
     private final Executor mainThreadExecutor= new MainThreadExecutor();
     //can schedule commands like runable tasks
-    private final ScheduledExecutorService NetworkIO = Executors.newScheduledThreadPool(3);
+    private final ScheduledExecutorService NetworkIO = Executors.newScheduledThreadPool(5);
 
     public ScheduledExecutorService networkIO() {
         return NetworkIO;

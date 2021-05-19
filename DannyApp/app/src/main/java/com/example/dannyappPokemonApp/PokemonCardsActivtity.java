@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,16 +32,18 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokemoncarditems);
+        setContentView(R.layout.pokemon_recyclecardslist);
         recyclerViewcards = findViewById(R.id.pokemonlistRecyclercards);
         pokemonKortViewModel = ViewModelProviders.of(this).get(PokemonKortViewModel.class);
         initRecyclerViewcards();
         SubscribeObservers();
+        setallRecycleview();
         initSearchViews();
         //  getIncomingIntent();
     }
 
         private void SubscribeObservers() {
+
         pokemonKortViewModel.getData().observe(this, new Observer<List<PokemonKort>>() {
 
 
@@ -59,7 +62,7 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
     private void initRecyclerViewcards() {
         pokemonRecycleAdapterCards = new PokemonRecycleAdapterCards( this);
         recyclerViewcards.setAdapter(pokemonRecycleAdapterCards);
-        recyclerViewcards.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewcards.setLayoutManager(new GridLayoutManager(getParent(), 4));
     }
     private void initSearchViews() {
         final SearchView searchView = findViewById(R.id.search_viewcards);
@@ -68,7 +71,7 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
             public boolean onQueryTextSubmit(String query) {
                 pokemonRecycleAdapterCards.displayLoadingCards();
 
-                pokemonKortViewModel.searchPokemonApiCards("set.id:base1" + query, 1, 250);
+                pokemonKortViewModel.searchPokemonApiCards("name:" + query, 1, 250);
                 return false;
             }
 
@@ -78,16 +81,22 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
             }
         });
     }
+    public void searchPokemonApiCards(String query, int page, int pageSize) {
+        pokemonKortViewModel.searchPokemonApiCards(query, page, pageSize);
 
 
+    }
 
+    public void setallRecycleview() {
+        searchPokemonApiCards("set.id:base1", 1, 250);
+    }
   /*  private void SetPokemonDetails(List<PokemonKort> pokemonKort) {
         if(pokemonKort!= null) {
             RequestOptions requestOptions = new RequestOptions()
                     .placeholder(R.drawable.ic_launcher_background);
             Glide.with(this)
-                    .setDefaultRequestOptions(requestOptions)
-                    .load(new PokemonKort().getImage().getSmall())
+                    .setDefaultRequestOptions()
+                    .load(new PokemonKort().getImage().gerequestOptionstSmall())
                     .into(Pokemoncard);
 
             Pokemon_Number.setText(new PokemonKort.getName());
@@ -111,20 +120,19 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
         ScrollViewParent.setVisibility(View.VISIBLE);
         }
 */
-    @Override
-    public void onPokemonclick(int position) {
+        @Override
+        public void onPokemonclick ( int position){
+
+        }
+
+        @Override
+        public void onPokemonCardClick ( int position){
+
+        }
+
 
     }
 
-    @Override
-    public void onPokemonCardClick(int position) {
-
-    }
-
-
-
-
-}
 
 
 
