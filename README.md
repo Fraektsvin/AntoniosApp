@@ -40,19 +40,20 @@ The main motivation behind the application is to make an pokemon app, that can d
 #### Non-functional requirements 
 ##### Must 
 •	Accurate fetching:   
-Fetching the correct data and show it with 100 % accuracy in regards to cards and sealed products.   
-•	Synchronized system  
-•	Hosting the backened in firebase  
-•	Availability: The web-service and database must be up at all times during the exam  
+Fetching the correct data and show it with 100 % accuracy in regards to cards and sealed products. ADDED
+•	Synchronized system  ADDED
+•	Hosting the backened in firebase  ADDED
+•	Availability: The web-service and database must be up at all times during the exam  ADDED
 
+EVERYTHING ABOVE IS ADDED 
 
 ##### Should 
 
 
 ##### Could
-•	Reference to Instagram - NOT ADDED
-•	Description about Danny - NOT ADDED
-•	Linked between the different sites or apps. - ADDED
+•	Reference to Instagram  NOT ADDED
+•	Description about Danny  NOT ADDED
+•	Linked between the different sites or apps.  ADDED
 
 ##### Would 
-• Reliable (backup database) - NOT ADDED
+• Reliable (backup database)  NOT ADDED
