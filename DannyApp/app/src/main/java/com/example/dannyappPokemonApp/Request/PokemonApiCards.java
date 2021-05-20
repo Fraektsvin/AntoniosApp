@@ -6,10 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.dannyappPokemonApp.AppExecutors;
-import com.example.dannyappPokemonApp.Request.Response.PokeSearchSet;
 import com.example.dannyappPokemonApp.Request.Response.PokelistResponse;
 import com.example.dannyappPokemonApp.Util.Constants;
-import com.example.dannyappPokemonApp.models.PokemonSet;
 import com.example.dannyappPokemonApp.models.PokemonKort;
 
 import java.io.IOException;
@@ -29,7 +27,8 @@ public class PokemonApiCards {
     private static PokemonApiCards instance;
     private MutableLiveData<List<PokemonKort>> pokemonkortlist;
     private RetrieveRunnablePokemonlist retrieveRunnablePokemonlist;
-
+    private MutableLiveData<PokemonKort> Pokemonkortsingleobjekt;
+    private RetrieveRunnablePokemonKortSingle retrieveRunnablePokemonKortSingle;
 
     public static PokemonApiCards getInstance() {
         if (instance == null) {
@@ -38,12 +37,16 @@ public class PokemonApiCards {
         return instance;
     }
 
-
     public PokemonApiCards() {
         pokemonkortlist = new MutableLiveData<>();
+        Pokemonkortsingleobjekt = new MutableLiveData<>();
     }
+
     public LiveData<List<PokemonKort>> getData() {
         return pokemonkortlist;
+    }
+    public LiveData<PokemonKort> getSingleData(){
+        return Pokemonkortsingleobjekt;
     }
 
     public void searchPokemonKortApi(String query, int page, int pageSize) {
@@ -61,6 +64,21 @@ public class PokemonApiCards {
                 handler.cancel(true);
 
             }
+        },CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS);
+    }
+    public void searchPokemonkortID(String pokemonkortID) {
+        if(retrieveRunnablePokemonKortSingle != null) {
+            retrieveRunnablePokemonKortSingle = null;
+        }
+        retrieveRunnablePokemonKortSingle = new RetrieveRunnablePokemonKortSingle(pokemonkortID);
+        final Future handler = AppExecutors.getInstance().networkIO().submit(retrieveRunnablePokemonKortSingle);
+
+        AppExecutors.getInstance().networkIO().schedule(new Runnable() {
+            @Override
+            public void run() {
+            handler.cancel(true);
+            }
+
         },CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS);
     }
     private class RetrieveRunnablePokemonlist implements Runnable {
@@ -122,5 +140,62 @@ public class PokemonApiCards {
             Log.d(TAG, "CancelRequest: cancel the search ");
             cancelRequest = true;
         }
+
+
     }
-}
+
+    private class RetrieveRunnablePokemonKortSingle implements Runnable {
+
+        private String PokemonkortID;
+        private boolean cancelRequest;
+
+        public RetrieveRunnablePokemonKortSingle(String PokemonkortID) {
+            this.PokemonkortID = PokemonkortID;
+            cancelRequest = false;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Response response = getSingleData(PokemonkortID).execute();
+                if (cancelRequest) {
+                    return;
+                }
+                if (response.code() == 200) {
+                    PokemonKort pokemonKort = ((PokelistResponse) response.body()).getPokemonsingleKort();
+                    Pokemonkortsingleobjekt.postValue(pokemonKort);
+                } else {
+                    String error = response.errorBody().string();
+                    Log.e(TAG, "run: " + error);
+                    Pokemonkortsingleobjekt.postValue(null);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                Pokemonkortsingleobjekt.postValue(null);
+            }
+
+        }
+
+        private Call<PokelistResponse> getSingleData(String pokemonkortID) {
+            return ServiceGenerator.getPokemonAPI().getSingleCard(
+                    Constants.API_KEY,
+                    pokemonkortID
+
+            );
+        }
+
+        private void CancelRequest() {
+            Log.d(TAG, "CancelRequest: cancel the search ");
+            cancelRequest = true;
+        }
+
+        public void cancelRequest() {
+            if (retrieveRunnablePokemonlist != null) {
+                retrieveRunnablePokemonlist.CancelRequest();
+            }
+            if (retrieveRunnablePokemonKortSingle != null) {
+                retrieveRunnablePokemonKortSingle.cancelRequest();
+            }
+        }
+
+    }}

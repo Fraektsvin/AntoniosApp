@@ -13,6 +13,11 @@ public class PokelistResponse {
     @SerializedName("data")
     @Expose()
     private List<PokemonKort> pokeData;
+    private PokemonKort pokemonsingleKort;
+
+    public PokemonKort getPokemonsingleKort() {
+        return pokemonsingleKort;
+    }
 
     public List<PokemonKort> getPokeData() {
         return  pokeData;

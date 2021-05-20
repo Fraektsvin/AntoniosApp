@@ -99,7 +99,8 @@ public class RegisterActivity extends BaseActivity {
                  String password = Add_passwords.getText().toString().trim();
                  String name = Add_names.getText().toString().trim();
 
-                 if (!TextUtils.isEmpty(email)) {
+                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+
                     String id = myRef.push().getKey();
                     User users = new User(email, password, name);
                     myRef.child(id).setValue(users);

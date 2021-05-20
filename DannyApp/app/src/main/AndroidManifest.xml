@@ -25,6 +25,7 @@
         </activity>
         <activity android:name="com.example.dannyappPokemonApp.PokemonCardsActivtity" />
         <activity android:name="com.example.dannyappPokemonApp.RegisterActivity" />
+        <activity android:name="com.example.dannyappPokemonApp.PokemonSingleCardsActivity" />
 
         <activity android:name="com.example.dannyappPokemonApp.Pokemonlistacitvity" />
     </application>

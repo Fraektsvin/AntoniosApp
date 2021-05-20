@@ -24,5 +24,11 @@ public interface PokemonAPI {
 
 
         );
+        @GET("v2/cards")
+        Call<PokelistResponse> getSingleCard(
+                @Query("key") String key,
+                @Query("q") String query
+
+        );
 
 }

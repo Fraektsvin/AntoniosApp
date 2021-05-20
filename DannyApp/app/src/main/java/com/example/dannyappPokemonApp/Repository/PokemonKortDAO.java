@@ -46,10 +46,18 @@ public class PokemonKortDAO {
         return pokemonApiCards.getData();
     }
 
+    public LiveData<PokemonKort> getSingleData() {
+        return pokemonApiCards.getSingleData();
+    }
+
     public void searchPokemonApiCards(String query, int page, int pageSize) {
         if(page== 0) {
             page = 1;
         }
         pokemonApiCards.searchPokemonKortApi(query, page, pageSize);
+    }
+    public void searchPokemonSingleAPICards(String pokemonkortID ) {
+
+        pokemonApiCards.searchPokemonkortID(pokemonkortID);
     }
 }
