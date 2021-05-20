@@ -1,20 +1,15 @@
 package com.example.dannyappPokemonApp.Viewmodel;
 
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.dannyappPokemonApp.Repository.PokemonKortDAO;
+import com.example.dannyappPokemonApp.Repository.PokemonKortRepository;
 import com.example.dannyappPokemonApp.models.PokemonKort;
 
 import java.util.List;
 
 public class PokemonKortViewModel extends ViewModel {
-    private PokemonKortDAO pokemonKortDAO;
+    private PokemonKortRepository pokemonKortRepository;
     private boolean ViewingPomemonCards;
 
 
@@ -28,16 +23,16 @@ public class PokemonKortViewModel extends ViewModel {
 
      */
         public PokemonKortViewModel() {
-        pokemonKortDAO = PokemonKortDAO.getInstance();
+        pokemonKortRepository = PokemonKortRepository.getInstance();
     }
 
     public LiveData<List<PokemonKort>> getData() {
-        return pokemonKortDAO.getData();
+        return pokemonKortRepository.getData();
     }
 
 
     public void searchPokemonApiCards(String query, int page, int pageSize) {
-        pokemonKortDAO.searchPokemonApiCards(query, page, pageSize);
+        pokemonKortRepository.searchPokemonApiCards(query, page, pageSize);
 
     }
     /*

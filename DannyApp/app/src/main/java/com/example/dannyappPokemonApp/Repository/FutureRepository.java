@@ -15,23 +15,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MainRepository {
-        private static MainRepository instance;
-        private PokemonKortDAO pokemonKortDAO;
-        private PokemonSetDAO pokemonSetDAO;
+public class FutureRepository {
+    /*    private static FutureRepository instance;
+        private PokemonKortRepository pokemonKortRepository;
+        private PokemonSetRepository pokemonSetRepository;
 
 
-        public static MainRepository getInstance(){
+        public static FutureRepository getInstance(){
             if(instance == null){
-                instance = new MainRepository();
+                instance = new FutureRepository();
             }
             return instance;
         }
 
 
-        private MainRepository() {
-            pokemonSetDAO = PokemonSetDAO.getInstance();
-            pokemonKortDAO = PokemonKortDAO.getInstance();
+        private FutureRepository() {
+            pokemonSetRepository = PokemonSetRepository.getInstance();
+            pokemonKortRepository = PokemonKortRepository.getInstance();
         }
 
         public LiveData<Ressource<List<PokemonKort>>> searchRecipesApi(String query, int page, int pageSize){
@@ -63,6 +63,8 @@ public class MainRepository {
                 }
             }.getAsLiveData();
         }
+
+     */
     }
 
 

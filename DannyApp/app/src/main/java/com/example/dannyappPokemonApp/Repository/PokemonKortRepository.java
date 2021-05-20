@@ -1,23 +1,18 @@
 package com.example.dannyappPokemonApp.Repository;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.example.dannyappPokemonApp.Request.PokemonApiCards;
-import com.example.dannyappPokemonApp.Request.PokemonApiClient;
 import com.example.dannyappPokemonApp.models.PokemonKort;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 /*import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 */
-import java.util.ArrayList;
 import java.util.List;
 
-public class PokemonKortDAO {
+public class PokemonKortRepository {
     private PokemonApiCards pokemonApiCards;
-    private static PokemonKortDAO instance;
+    private static PokemonKortRepository instance;
    /* private FirebaseDatabase database;
     private static DatabaseReference databaseReference;
    // private StorageReference storageReference;
@@ -26,14 +21,14 @@ public class PokemonKortDAO {
     private MutableLiveData<List<PokemonKort>> Actullist;
     private MutableLiveData<List<PokemonKort>> Pokemonholder;
 */
-    public static PokemonKortDAO getInstance() {
+    public static PokemonKortRepository getInstance() {
         if(instance== null) {
-            instance = new PokemonKortDAO();
+            instance = new PokemonKortRepository();
         }
         return instance;
     }
 
-    private  PokemonKortDAO() {
+    private PokemonKortRepository() {
       /*  Pokemonholder = new MutableLiveData<>(new ArrayList<>());
         Actullist = new MutableLiveData<>(new ArrayList<>());
         database = FirebaseDatabase.getInstance("https://dannyapp-3152f-default-rtdb.europe-west1.firebasedatabase.app/");

@@ -16,7 +16,7 @@ import com.example.dannyappPokemonApp.Request.Response.ApiResponseGeneric;
 import java.util.concurrent.Executor;
 
 public abstract class NetworkRessourcehelper <FirebaseObject, RequestObject> {
-
+/*
         private static final String TAG = "Called";
         private AppExecutors appExecutors;
         private MediatorLiveData<Ressource<FirebaseObject>> results = new MediatorLiveData<>();
@@ -75,7 +75,7 @@ public abstract class NetworkRessourcehelper <FirebaseObject, RequestObject> {
                                 2.Apierror
                                 3.ApiEmpty
                                  */
-                                if(requestObjectApiResponseGeneric instanceof ApiResponseGeneric.Apisuccesfullresponse) {
+                         /*       if(requestObjectApiResponseGeneric instanceof ApiResponseGeneric.Apisuccesfullresponse) {
                                         appExecutors.ManagingData().execute(new Runnable() {
                                                 @Override
                                                 public void run() {
@@ -155,5 +155,7 @@ public abstract class NetworkRessourcehelper <FirebaseObject, RequestObject> {
         public final LiveData<Ressource<FirebaseObject>> getAsLiveData(){
             return results;
         };
+        */
+
     }
 

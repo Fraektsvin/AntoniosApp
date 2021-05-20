@@ -7,17 +7,17 @@ import java.util.List;
 import com.example.dannyappPokemonApp.Request.PokemonApiClient;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
-public  class PokemonSetDAO {
-    private static PokemonSetDAO instance;
+public  class PokemonSetRepository {
+    private static PokemonSetRepository instance;
     private PokemonApiClient rPokemonApiClient;
 
-    public static PokemonSetDAO getInstance() {
+    public static PokemonSetRepository getInstance() {
         if(instance== null) {
-            instance = new PokemonSetDAO();
+            instance = new PokemonSetRepository();
         }
         return instance;
     }
-    private PokemonSetDAO() {
+    private PokemonSetRepository() {
         rPokemonApiClient = PokemonApiClient.getInstance();
     }
 

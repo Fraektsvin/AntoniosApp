@@ -1,17 +1,15 @@
 package com.example.dannyappPokemonApp.Viewmodel;
 
-import android.content.Context;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import com.example.dannyappPokemonApp.Repository.PokemonSetDAO;
+import com.example.dannyappPokemonApp.Repository.PokemonSetRepository;
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 public class PokemonlistViewModel extends ViewModel {
-    private PokemonSetDAO rpokemonSetDAO;
+    private PokemonSetRepository rpokemonSetRepository;
     private boolean ViewingPomemonCards;
 
     public boolean isViewingPomemonCards() {
@@ -24,18 +22,18 @@ public class PokemonlistViewModel extends ViewModel {
 
     public PokemonlistViewModel() {
         ViewingPomemonCards = false;
-        rpokemonSetDAO = PokemonSetDAO.getInstance();
+        rpokemonSetRepository = PokemonSetRepository.getInstance();
     }
 
     public LiveData<List<PokemonSet>> getSet() {
-        return rpokemonSetDAO.getSet();
+        return rpokemonSetRepository.getSet();
     }
 
 
 
     public void searchPokemonApi(String query, int page, int pageSize) {
         ViewingPomemonCards = true;
-        rpokemonSetDAO.searchPokemonApi(query, page, pageSize);
+        rpokemonSetRepository.searchPokemonApi(query, page, pageSize);
     }
 
 }

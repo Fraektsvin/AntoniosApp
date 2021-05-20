@@ -3,22 +3,22 @@ package com.example.dannyappPokemonApp.Viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.dannyappPokemonApp.Repository.PokemonKortDAO;
+import com.example.dannyappPokemonApp.Repository.PokemonKortRepository;
 import com.example.dannyappPokemonApp.models.PokemonKort;
 
 public class PokemonKortSingleViewModel extends ViewModel {
 
-    private PokemonKortDAO pokemonKortDAO;
+    private PokemonKortRepository pokemonKortRepository;
 
     public PokemonKortSingleViewModel() {
-        pokemonKortDAO = PokemonKortDAO.getInstance();
+        pokemonKortRepository = PokemonKortRepository.getInstance();
     }
 
     public LiveData<PokemonKort> getSingleData() {
-        return pokemonKortDAO.getSingleData();
+        return pokemonKortRepository.getSingleData();
     }
     public void searchPokemonApiCards(String pokemonkortID ) {
 
-        pokemonKortDAO.searchPokemonSingleAPICards(pokemonkortID);
+        pokemonKortRepository.searchPokemonSingleAPICards(pokemonkortID);
     }
 }
