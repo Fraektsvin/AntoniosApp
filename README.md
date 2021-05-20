@@ -39,17 +39,16 @@ The main motivation behind the application is to make an pokemon app, that can d
 1.	The admin should be able to list cards up for sale. - NOT ADDED
 #### Non-functional requirements 
 ##### Must 
-•	Accurate fetching: ADDED
+•	Accurate fetching: - ADDED
 
-Fetching the correct data and show it with 100 % accuracy in regards to cards and sealed products.ADDED
+Fetching the correct data and show it with 100 % accuracy in regards to cards and sealed products. - ADDED
 
 •	Synchronized system - ADDED
 
-•	Hosting the backened in firebase  ADDED
+•	Hosting the backened in firebase  - ADDED
 
-•	Availability: The web-service and database must be up at all times during the exam  ADDED
+•	Availability: The web-service and database must be up at all times during the exam  - ADDED
 
-EVERYTHING ABOVE IS ADDED 
 
 ##### Should 
 
