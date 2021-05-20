@@ -10,20 +10,22 @@ The main motivation behind the application is to make an pokemon app, that can d
 ### Moscow
 #### Functional requirements 
 ##### Must 
-1.	The client must be able to make requests to the web-service(protocol)
+1.	The client must be able to make requests to the web-service() & API
 
 2.	The web-service must be able to read/write information from/to the database
 3.	Login to admin account
-4.	Store cards and sealed product information 
+4.	Store user information
 5.	View all cards and sealed products 
 6.	Make it possibil to search after a specific card
 7.	Cards/sealed product needs to be categorized in specific section after set
-8.	Users  can view description of the card/ sealed product 
 ##### Should 
 1.	Needs to be created an admin/user account 
 2.	Ability to delete and add new cards/sealed product 
 3.	Admin is able to edit cards/sealed product 
 4.	Showing resent sales date on the different cards/sealed product from ebay or slabwatch. 
+5.	Users  can view description of the card/ sealed product 
+6.	Store cards and sealed product information 
+
 
 ##### Could
 1.	Customers can contact the admin 
