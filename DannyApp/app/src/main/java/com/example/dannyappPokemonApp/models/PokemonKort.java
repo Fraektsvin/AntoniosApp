@@ -1,6 +1,5 @@
 package com.example.dannyappPokemonApp.models;
 
-import android.media.Image;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -19,12 +18,12 @@ public class PokemonKort implements Parcelable   {
     public String rarity;
     public List<Integer> nationalPokedexNumbers;
     public Legalities legalities;
-    public Images image;
+    public Images images;
     public Tcgplayer tcgplayer;
     public String Description;
     private boolean owned;
 
-    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images image, Tcgplayer tcgplayer, String description, boolean owned) {
+    public PokemonKort(String id, String name, String supertype, List<String> subtypes, List<String> types, PokemonSet set, String number, String artist, String rarity, List<Integer> nationalPokedexNumbers, Legalities legalities, Images images, Tcgplayer tcgplayer, String description, boolean owned) {
         this.id = id;
         this.name = name;
         this.supertype = supertype;
@@ -36,7 +35,7 @@ public class PokemonKort implements Parcelable   {
         this.rarity = rarity;
         this.nationalPokedexNumbers = nationalPokedexNumbers;
         this.legalities = legalities;
-        this.image = image;
+        this.images = images;
         this.tcgplayer = tcgplayer;
         Description = description;
         this.owned = owned;
@@ -58,6 +57,7 @@ public class PokemonKort implements Parcelable   {
         artist = in.readString();
         rarity = in.readString();
         Description = in.readString();
+        images = in.readParcelable(Images.class.getClassLoader());
     }
 
     @Override
@@ -72,6 +72,7 @@ public class PokemonKort implements Parcelable   {
         dest.writeString(artist);
         dest.writeString(rarity);
         dest.writeString(Description);
+        dest.writeParcelable(images, flags);
     }
 
     @Override
@@ -179,12 +180,12 @@ public class PokemonKort implements Parcelable   {
         this.legalities = legalities;
     }
 
-    public Images getImage() {
-        return image;
+    public Images getImages() {
+        return images;
     }
 
-    public void setImage(Images image) {
-        this.image = image;
+    public void setImages(Images images) {
+        this.images = images;
     }
 
     public Tcgplayer getTcgplayer() {

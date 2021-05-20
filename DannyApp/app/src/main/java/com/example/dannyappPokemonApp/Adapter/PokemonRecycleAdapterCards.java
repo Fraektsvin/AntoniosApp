@@ -10,18 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
-import com.example.dannyappPokemonApp.models.PokemonKort;
 
-import org.jetbrains.annotations.NotNull;
+import com.example.dannyappPokemonApp.models.PokemonKort;
+import com.example.dannyappPokemonApp.models.PokemonSet;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerView. ViewHolder> {
+public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerView. ViewHolder>   {
     private List<PokemonKort> pokemonKorts;
     private OnPokemonListener onPokemonListener;
-    private static final int Loading_types = 3;
-    private static final int PokemonCard_type = 4;
+    private static final int Loading_types = 4;
+    private static final int PokemonCard_type = 3;
     private LoadViewholder LoadViewholder;
 
     public PokemonRecycleAdapterCards(OnPokemonListener onPokemonListenes) {
@@ -29,9 +30,9 @@ public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerVie
         pokemonKorts = new ArrayList<>();
     }
 
-    @NotNull
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NotNull ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = null;
 
         switch (i) {
@@ -52,7 +53,8 @@ public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerVie
         }
     }
     @Override
-    public void onBindViewHolder( @NotNull RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder( @NonNull RecyclerView.ViewHolder viewHolder, int position) {
+
         int itemViewType1 = getItemViewType(position);
         if (itemViewType1 == PokemonCard_type) {
 
@@ -61,8 +63,9 @@ public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerVie
 
             Glide.with(viewHolder.itemView.getContext())
                     .setDefaultRequestOptions(requestOptions)
-                    .load(pokemonKorts.get(position).getImage().getSmall())
-                    .into(((PokemonCardViewHolder) viewHolder).Pokemoncard);
+                    .load(pokemonKorts.get(position).getImages().getSmall())
+                    .fitCenter().centerInside()
+                    .into(((PokemonCardViewHolder) viewHolder).Pokemoncard_image);
 
 
 
@@ -114,4 +117,21 @@ public class PokemonRecycleAdapterCards extends RecyclerView.Adapter<RecyclerVie
         pokemonKorts = pokemonKortslist;
         notifyDataSetChanged();
     }
+    public PokemonKort getSelectSet(int position) {
+        if(pokemonKorts!=null) {
+            if(pokemonKorts.size()>0) {
+
+            }
+        }
+        return  null;
+    }
+    public PokemonKort getSelectedCard(int position) {
+        if(pokemonKorts != null) {
+            if(pokemonKorts.size()> 0 ) {
+                return pokemonKorts.get(position);
+            }
+        }
+        return null;
+    }
+
 }

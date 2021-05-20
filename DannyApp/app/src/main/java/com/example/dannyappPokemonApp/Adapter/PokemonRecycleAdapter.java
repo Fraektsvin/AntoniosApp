@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.dannyapp.R;
-import com.example.dannyappPokemonApp.Viewmodel.PokemonKortViewModel;
-import com.example.dannyappPokemonApp.models.PokemonKort;
+
 import com.example.dannyappPokemonApp.models.PokemonSet;
 
 import java.util.ArrayList;

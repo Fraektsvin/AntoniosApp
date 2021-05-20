@@ -11,17 +11,17 @@ import com.example.dannyapp.R;
 
 public class PokemonCardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    OnPokemonListener listener;
-    ImageView Pokemoncard;
+    ImageView Pokemoncard_image;
     TextView pokemoncardname,pokemon_number;
+    OnPokemonListener listener;
+
     public PokemonCardViewHolder( View itemView, OnPokemonListener listener) {
         super(itemView);
         this.listener =listener;
 
-        Pokemoncard = itemView.findViewById(R.id.Pokemoncard_image);
+        Pokemoncard_image = itemView.findViewById(R.id.Pokemoncard_image);
         pokemoncardname = itemView.findViewById(R.id.Pokemoncardtxt);
         pokemon_number = itemView.findViewById(R.id.Pokemon_Number);
-
         itemView.setOnClickListener(this);
     }
 

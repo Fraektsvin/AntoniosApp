@@ -12,6 +12,8 @@ public class Images implements Parcelable {
     protected Images(Parcel in) {
         Symbol = in.readString();
         logo = in.readString();
+        small = in.readString();
+        large = in.readString();
 
     }
 
@@ -64,9 +66,11 @@ public class Images implements Parcelable {
 
 
 
-    public Images(String symbol, String logo) {
+    public Images(String symbol, String logo, String small, String large) {
         Symbol = symbol;
         this.logo = logo;
+        this.small = small;
+        this.large = large;
 
     }
 

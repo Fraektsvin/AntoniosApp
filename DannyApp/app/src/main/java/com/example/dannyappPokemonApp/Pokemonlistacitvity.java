@@ -36,6 +36,7 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         pokemonlistViewModel = ViewModelProviders.of(this).get(PokemonlistViewModel.class);
         initRecyclerView();
         subscribeObservers();
+        setAllRecycleview();
         initSearchView();
 
     }
@@ -103,5 +104,14 @@ public class Pokemonlistacitvity extends BaseActivity implements OnPokemonListen
         pokemonRecycleAdapter.displayLoadingCards();
 
         */
+    }
+    public void searchPokemonApi(String query, int page, int pageSize) {
+        pokemonlistViewModel.searchPokemonApi(query, page, pageSize);
+
+
+    }
+
+    public void setAllRecycleview() {
+        searchPokemonApi("", 1, 250);
     }
 }

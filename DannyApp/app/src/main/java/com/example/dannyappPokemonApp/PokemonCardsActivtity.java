@@ -1,5 +1,6 @@
 package com.example.dannyappPokemonApp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -62,7 +63,8 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
     private void initRecyclerViewcards() {
         pokemonRecycleAdapterCards = new PokemonRecycleAdapterCards( this);
         recyclerViewcards.setAdapter(pokemonRecycleAdapterCards);
-        recyclerViewcards.setLayoutManager(new GridLayoutManager(getParent(), 4));
+        recyclerViewcards.setHasFixedSize(true);
+        recyclerViewcards.setLayoutManager(new GridLayoutManager(getParent(), 3));
     }
     private void initSearchViews() {
         final SearchView searchView = findViewById(R.id.search_viewcards);
@@ -83,6 +85,8 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
     }
     public void searchPokemonApiCards(String query, int page, int pageSize) {
         pokemonKortViewModel.searchPokemonApiCards(query, page, pageSize);
+        pokemonRecycleAdapterCards.displayLoadingCards();
+
 
 
     }
@@ -127,7 +131,9 @@ public class PokemonCardsActivtity extends BaseActivity implements OnPokemonList
 
         @Override
         public void onPokemonCardClick ( int position){
-
+        Intent intent = new Intent(this, PokemonSingleCardsActivity.class);
+        intent.putExtra("PokemonKort", pokemonRecycleAdapterCards.getSelectedCard(position));
+        startActivity(intent);
         }
 
 
