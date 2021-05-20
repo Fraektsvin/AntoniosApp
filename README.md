@@ -54,11 +54,11 @@ Fetching the correct data and show it with 100 % accuracy in regards to cards an
 
 
 ##### Could
-•	Reference to Instagram  NOT ADDED
+•	Reference to Instagram  - NOT ADDED
 
-•	Description about Danny  NOT ADDED
+•	Description about Danny -  NOT ADDED
 
-•	Linked between the different sites or apps.  ADDED
+•	Linked between the different sites or apps.  - ADDED
 
 ##### Would 
 • Reliable (backup database)  NOT ADDED
